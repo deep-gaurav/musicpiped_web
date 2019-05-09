@@ -8,6 +8,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    js.context.callMethod("removeLoader");
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
