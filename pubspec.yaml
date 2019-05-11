@@ -25,14 +25,3 @@ dependency_overrides:
     git:
       url: https://github.com/flutter/flutter_web
       path: packages/flutter_web_ui
-
-targets:
-  $default:
-    builders:
-      build_web_compilers|entrypoint:
-        generate_for:
-        - web/**.dart
-        options:
-          dart2js_args:
-            - --no-source-maps
-            - -O4
