@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_web/material.dart';
+import 'package:flutter_web/widgets.dart';
 import 'package:http/http.dart' as http;
 
 import 'main.dart' as main;
@@ -17,7 +18,7 @@ class Trending extends StatefulWidget {
 
 }
 
-class _TrendingState extends State<Trending> {
+class _TrendingState extends State<Trending> with AutomaticKeepAliveClientMixin {
   Future<http.Response> requestFuture;
   String trendingQuery =
       main.MyHomePageState.InvidiosAPI + "trending?type=music&region=";
@@ -83,6 +84,9 @@ class _TrendingState extends State<Trending> {
           },
         ));
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class TrackTile extends StatelessWidget {
@@ -92,13 +96,14 @@ class TrackTile extends StatelessWidget {
 
   TrackTile(this.trackInfo,this.onPressed);
 
-  String urlfromImage(List imglist, String quality) {
+  static String urlfromImage(List imglist, dynamic quality, {String param="quality"}) {
     for (Map f in imglist) {
-      String q = f["quality"];
-      if (q.compareTo(quality) == 0) {
+      var q = f[param];
+      if (q== quality) {
         return f["url"];
       }
     }
+    return null;
   }
 
   @override
@@ -117,7 +122,7 @@ class TrackTile extends StatelessWidget {
                 left: 0,
                 bottom: 0,
                 child: Container(
-                  color: Color.fromRGBO(255, 255, 255, 0.6),
+                  color: Theme.of(context).backgroundColor.withAlpha(200),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     mainAxisSize: MainAxisSize.min,

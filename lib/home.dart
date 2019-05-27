@@ -41,6 +41,11 @@ class _HomeState extends State<Home> {
         print(track);
         alltracks.add(track);
       }, onDone: () {
+        alltracks.sort(
+          (t1,t2){
+            return (t2["timesPlayed"] as int).compareTo(t1["timesPlayed"]);
+          }
+        );
         c.complete(alltracks);
         print("Completed");
       });
@@ -77,7 +82,7 @@ class _HomeState extends State<Home> {
                 ),
               );
             } else {
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator());
             }
           },
         )
