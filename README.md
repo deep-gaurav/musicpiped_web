@@ -5,6 +5,7 @@
 <a href="https://www.gnu.org/licenses/gpl-3.0" alt="License: GPLv3"><img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg"></a>
 </p>
 <hr>
+
 ## Description
 
 MusicPiped is a materialistic designed music player. It tries to be a music player that instead of playing music from local files streams them from YouTube. It is similar to YouTube Music in sense that it searches and plays from YouTube. But different in way that it does not lists any track by itself and user needs to either add their track from youtube by searching or importing playlist (similar to adding music in a music player). It also does not uses any Google APIs thus is independent of google services and can work without them, allowing background playback and no ads.
